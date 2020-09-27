@@ -428,6 +428,20 @@ FileWriter fw = null;
 		通过构造器自动装配：当bean中存在多个构造器时，此种自动装配方式将会很复杂。不推荐使用。
 	3. 
 
+## springmvc
+
+#### @RequestMapping
+	1. 要使用pom文件解决依赖关系
+	2. 使用 @RequestMapping 映射请求
+
+### modelandview
+	1.Spring MVC 在调用方法前会创建一个隐含的模型对象作为模型数据的存储容器。
+		– 如果方法的入参为 Map 或 Model 类型，Spring MVC 会将隐含模型的引用传递给这些入参。在方法体内，开发者可以通过这个入参对象访问到模型中的所有数据，也可以向模型中添加新的属性数据
+
+	2. SpringMVC 确定目标方法 POJO 类型入参的过程
+	 * 1. 确定一个 key:
+	 * 若目标方法的 POJO 类型的参数木有使用 @ModelAttribute 作为修饰, 则 key 为 POJO 类名第一个字母的小写
+	 * 若使用了  @ModelAttribute 来修饰, 则 key 为 @ModelAttribute 注解的 value 属性值. 
 
 
 
