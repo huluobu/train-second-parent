@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>光大会员注册页面</title>
@@ -44,14 +44,19 @@
 					return false;
 				}
 				$("span.errorMsg").text("");
-
-
-
 			});
 
 		});
-	</script>
 
+	</script>
+	<script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="static/script/jquery-1.7.2.js">
+		var bm=$("#backmsg").val()
+		if (bm.length > 0) {
+			alert(bm);
+		}
+
+	</script>
 	<style type="text/css">
 		.login_form{
 			height:420px;
@@ -62,7 +67,7 @@
 </head>
 <body>
 <div id="header">
-	<img class="logo_img" alt="" src="static/img/logo2.gif" >
+<!--	<img class="logo_img" alt="" src="static/img/logo2.gif" >-->
 	<span class="wel_word">光大影城</span>
 </div>
 
@@ -78,9 +83,11 @@
 				<div class="tit">
 					<h1>注册光大会员</h1>
 					<span class="errorMsg"></span>
+					<input type="hidden" id="" id="backmsg" name="backmsg" th:value="${msg}">
+<!--					<span th:type="hidden" th:id="backmsg" th:name="backmsg" th:data="${msg}"></span>-->
 				</div>
 				<div class="form">
-					<form action="registServlet" method="post">
+					<form action="submitRegister" method="post">
 						<label>用户名称：</label>
 						<input class="itxt" type="text" placeholder="请输入用户名" autocomplete="off" tabindex="1" name="username" id="username" />
 						<br />

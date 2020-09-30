@@ -1,6 +1,8 @@
 package com.carrot.train.mapper;
 
+import com.carrot.train.enetity.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 
 /**
@@ -11,4 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UsersMapper extends BaseMapper {
+
+    User findByUserName(Object primaryKey);
 }

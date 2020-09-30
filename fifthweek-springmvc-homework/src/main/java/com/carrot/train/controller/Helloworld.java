@@ -49,4 +49,10 @@ public class Helloworld {
         }
     }
 
+    @RequestMapping("/hello6")
+    public String testView(){
+        System.out.println("testView");
+        return "helloView";
+    }
+
 }

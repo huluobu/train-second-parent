@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>光大影城登录页面</title>
 	<base href="http://localhost:8080/film/">
 <link type="text/css" rel="stylesheet" href="static/css/style.css" >
+	<script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
+
 </head>
 <body>
 			<div id="header">
@@ -23,6 +25,8 @@
 						<div class="login_box">
 							<div class="tit">
 								<h1>光大会员</h1>
+<!--								<span class="errorMsg" name="msg" id="msg" th:text="${msg}" ></span>-->
+								<input type="hidden" name="msg" id="msg" th:value="${msg}"/>
 								<a href="regist.html">立即注册</a>
 							</div>
 							<div class="msg_cont">
@@ -30,7 +34,7 @@
 								<span class="errorMsg">请输入用户名和密码</span>
 							</div>
 							<div class="form">
-								<form action="loginServlet" method="post">
+								<form action="submitLogin" method="post">
 									<label>用户名称：</label>
 									<input class="itxt" type="text" placeholder="请输入用户名"
 										   autocomplete="off" tabindex="1" name="username" />
@@ -54,4 +58,12 @@
 			</span>
 		</div>
 </body>
+<script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+	var bm=$("#msg").val()
+	if (bm != "") {
+		alert(bm);
+	}
+
+</script>
 </html>

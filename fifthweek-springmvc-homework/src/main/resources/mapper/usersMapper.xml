@@ -4,28 +4,28 @@
 <mapper namespace="com.carrot.train.mapper.UsersMapper">
 
     <insert id="insert" parameterType="com.carrot.train.enetity.User">
-        INSERT INTO users(userId, userName, password, enabled, loginTime, createdTime,
-        delflag, modifiedTime)
-        VALUES(#{userId}, #{userName}, #{password}, #{enabled}, #{loginTime},
-        #{createdTime}, #{delflag}, #{modifiedTime});
+        INSERT INTO t_user(Id, username, password, email)
+        VALUES(#{id}, #{username}, #{username}, #{email});
     </insert>
 
     <update id="update" parameterType="com.carrot.train.enetity.User">
-        UPDATE users
+        UPDATE t_user
         <set>
-            <if test="null != userName">userName=#{userName},</if>
+            <if test="null != username">username=#{username},</if>
             <if test="null != password">password=#{password},</if>
-            <if test="null != enabled">enabled=#{enabled},</if>
-            <if test="null != loginTime">loginTime=#{loginTime},</if>
-            <if test="null != delflag">delflag=#{delflag}</if>
+            <if test="null != email">email=#{email}</if>
         </set>
         <where>
-            userId=#{userId}
+            id=#{id}
         </where>
     </update>
 
     <select id="findByPrimaryKey" parameterType="String" resultType="com.carrot.train.enetity.User">
-        SELECT * FROM users WHERE userId=#{primaryKey}
+        SELECT * FROM t_user WHERE id=#{primaryKey}
+    </select>
+
+    <select id="findByUserName" parameterType="String" resultType="com.carrot.train.enetity.User">
+        SELECT * FROM t_user WHERE username=#{primaryKey}
     </select>
 
 </mapper>

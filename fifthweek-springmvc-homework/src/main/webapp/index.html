@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 <meta charset="UTF-8">
 <title>影城首页</title>
@@ -10,22 +12,30 @@
 	<div id="header">
 			<img class="logo_img" alt="" src="static/img/logo2.gif" >
 			<span class="wel_word">影城订票</span>
+            <input type="hidden" name="msg" id="msg" th:value="${session.username}"/>
 			<div>
-                <a href="hello2?username=carrot&age=12">test</a> |
-				<a href="pages/user/login.html">登录</a> | 
-				<a href="pages/user/regist.html">注册</a> &nbsp;&nbsp;
+                <a href="hello2?username=carrot&age=12">test</a>|
+                <a href="pages/error.html">error</a> |
+				<a href="pages/user/login.html" id="login" name="login" >登录</a>
+<!--                <a th:href="@{pages/user/login.html}" th:if="${session.username==null}">登录</a>|-->
+				<a href="pages/user/regist.html">注册</a>
+<!--                <a th:href="@{pages/user/regist.html}" th:if="${session.username==null}">注册</a>|-->
 				<a href="pages/cart/cart.html">我的订单</a>
+<!--                <a th:href="@{pages/cart/cart.html}" th:if="${session.username!=null}">我的订单</a>|-->
 				<a href="pages/manager/manager.html">后台管理</a>
+<!--                <a th:href="@{pages/manager/manager.html}" th:if="${session.username=='admin'}">后台管理</a>|-->
 			</div>
-            <form action="hello5" method="Post">
-                <input type="hidden" name="id" value="1"/>
-                username: <input type="text" name="username" value="Tom"/>
-                <br>
-                email: <input type="text" name="email" value="tom@carrot.com"/>
-                <br>
-                <br>
-                <input type="submit" value="Submit"/>
-            </form>
+<!--            <form action="hello5" method="Post">-->
+<!--                <label><spring:message code="i18n.username"/>用户名称：</label>-->
+<!--                <input type="text" name="username" value="Tom"/>-->
+<!--                <br>-->
+<!--                <label><spring:message code="i18n.password"/>密码：</label>-->
+<!--                <input type="text" name="username" value="123456"/>-->
+<!--                <br>-->
+<!--                email: <input type="text" name="email" value="tom@carrot.com"/>-->
+<!--                <br>-->
+<!--                <input type="submit" value="Submit"/>-->
+<!--            </form>-->
             <br><br>
 	</div>
 	<div id="main">
@@ -174,4 +184,16 @@
 		</span>
 	</div>
 </body>
+<script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+    var bm=$("#msg").val()
+/*    if (bm != "") {
+        $("#a.login").style.display = "block";
+    }*/
+    if (bm == "") {
+        $("#a.login").style.display ="none";
+    }
+
+
+</script>
 </html>
