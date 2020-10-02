@@ -46,10 +46,15 @@ public class LoginController {
         }
 
         if (null != msg) {
-            model.addAttribute("msg", msg);
+//            model.addAttribute("msg", msg);
+            request.setAttribute("msg", msg);
+            request.setAttribute("username",username);
+            request.setAttribute("password",password);
 
             return "/user/login";
         }
+        System.out.println(user.toString());
+
         model.addAttribute("user", user);
         HttpSession session=request.getSession();
         session.setAttribute("username", username);

@@ -5,7 +5,15 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private String status;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public Integer getId() {
         return id;
@@ -38,6 +46,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
     @Override
     public String toString() {
         return "User{" +
@@ -45,16 +54,18 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 
     public User() {
     }
 
-    public User(Integer id, String username, String password, String email) {
+    public User(Integer id, String username, String password, String email,String status) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.status = status;
     }
 }

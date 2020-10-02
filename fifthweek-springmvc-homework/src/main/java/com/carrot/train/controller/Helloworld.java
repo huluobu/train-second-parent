@@ -42,7 +42,7 @@ public class Helloworld {
         System.out.println("modelAttribute method");
         if(id != null){
             //模拟从数据库中获取对象
-            User user = new User(1, "Tom", "123456", "tom@atguigu.com");
+            User user = new User(1, "Tom", "123456", "tom@atguigu.com","Y");
             System.out.println("从数据库中获取一个对象: " + user);
 
             map.put("adb", user);

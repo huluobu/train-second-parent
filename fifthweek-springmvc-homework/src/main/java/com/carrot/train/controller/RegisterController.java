@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Author: carrot
@@ -25,14 +27,19 @@ public class RegisterController {
     public Object submitRegister(String username, String password, Model model,String email,
                                  HttpServletRequest request) throws Exception {
         if (null == username || null == password || null == email) {
-            model.addAttribute("msg", "参数错误");
-            return "error";
+            request.setAttribute("msg", "参数错误");
+            request.setAttribute("username",username);
+            request.setAttribute("password",password);
+            return "/user/regist.html";
         }
 
 
         if (null != userServiceImp.findByUserName(username)) {
-            model.addAttribute("msg", "登录名已被注册");
-            return "redirect:pages/user/regist.html";
+            request.setAttribute("msg", "用户名已被注册");
+            request.setAttribute("username",username);
+            request.setAttribute("password",password);
+            request.setAttribute("email",email);
+            return "/user/regist.html";
 //            return "error";
         }
 
@@ -41,6 +48,7 @@ public class RegisterController {
         user.setUsername(username);
         user.setEmail(email);
         user.setPassword(password);
+        user.setStatus("Y");
         userServiceImp.insert(user);
         return "/user/regist_success.html";
     }

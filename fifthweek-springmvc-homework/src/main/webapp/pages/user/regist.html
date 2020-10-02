@@ -12,51 +12,52 @@
 				var usernametext = $("#username").val();
 				var usernamepat = /^\w{5,12}$/;
 				if (!usernamepat.test(usernametext)) {
-					$("span.errorMsg").text("输入的用户不合法");
+					$("#frontmsg").text("输入的用户不合法");
 					return false;
 				}
-				$("span.errorMsg").text("");
+				$("#frontmsg").text("");
 				var passwordtext = $("#password").val();
 				var passwordpat = /^\w{5,12}$/;
 				if (!passwordpat.test(passwordtext)) {
-					$("span.errorMsg").text("输入的密码不合法");
+					$("#frontmsg").text("输入的密码不合法");
 					return false;
 				}
-				$("span.errorMsg").text("");
+				$("#frontmsg").text("");
 				var repwdtext = $("#repwd").val();
 				if (repwdtext!=passwordtext) {
-					$("span.errorMsg").text("确认密码不一致");
+					$("#frontmsg").text("确认密码不一致");
 					return false;
 				}
-				$("span.errorMsg").text("");
+				$("#frontmsg").text("");
 
 				var mailtext = $("#email").val();
 				var mailpat = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 				if (mailtext != "") {
 					if (!mailpat.test(mailtext)) {
-						$("span.errorMsg").text("邮箱内容不合法");
+						$("#frontmsg").text("邮箱内容不合法");
 						return false;
 					}else{
 						return true;
 					}
 				}else {
-					$("span.errorMsg").text("邮箱内容不为空");
+					$("#frontmsg").text("邮箱内容不为空");
 					return false;
 				}
-				$("span.errorMsg").text("");
+				$("#frontmsg").text("");
+				$("#msg").text("");
 			});
 
 		});
 
 	</script>
 	<script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
-	<script type="text/javascript" src="static/script/jquery-1.7.2.js">
-		var bm=$("#backmsg").val()
-		if (bm.length > 0) {
-			alert(bm);
-		}
+<!--	<script type="text/javascript" src="static/script/jquery-1.7.2.js">-->
+<!--		var bm=$("#backmsg").val()-->
+<!--		if (bm.length > 0) {-->
+<!--			alert(bm);-->
+<!--		}-->
 
-	</script>
+<!--	</script>-->
 	<style type="text/css">
 		.login_form{
 			height:420px;
@@ -82,14 +83,16 @@
 			<div class="login_box">
 				<div class="tit">
 					<h1>注册光大会员</h1>
-					<span class="errorMsg"></span>
-					<input type="hidden" id="" id="backmsg" name="backmsg" th:value="${msg}">
+					<span class="errorMsg" name="frontmsg" id="frontmsg"></span>
+					<span class="errorMsg" name="msg" id="msg" th:text="${#request.getAttribute('msg')!=null}?${#request.getAttribute('msg')}:''" ></span>
+<!--					<input type="hidden" id="" id="backmsg" name="backmsg" th:value="${msg}">-->
 <!--					<span th:type="hidden" th:id="backmsg" th:name="backmsg" th:data="${msg}"></span>-->
 				</div>
 				<div class="form">
 					<form action="submitRegister" method="post">
 						<label>用户名称：</label>
-						<input class="itxt" type="text" placeholder="请输入用户名" autocomplete="off" tabindex="1" name="username" id="username" />
+						<input class="itxt" type="text" placeholder="请输入用户名" autocomplete="off" tabindex="1" name="username" id="username"
+							   th:value="${#request.getAttribute('username')!=null}?${#request.getAttribute('username')}:''" />
 						<br />
 						<br />
 						<label>用户密码：</label>
@@ -101,7 +104,8 @@
 						<br />
 						<br />
 						<label>电子邮件：</label>
-						<input class="itxt" type="text" placeholder="请输入邮箱地址" autocomplete="off" tabindex="1" name="email" id="email" />
+						<input class="itxt" type="text" placeholder="请输入邮箱地址" autocomplete="off" tabindex="1" name="email" id="email"
+							   th:value="${#request.getAttribute('email')!=null}?${#request.getAttribute('email')}:''"/>
 						<br />
 						<br />
 						<!--									<label>验证码：</label>-->
