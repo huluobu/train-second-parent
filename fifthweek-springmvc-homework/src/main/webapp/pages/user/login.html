@@ -25,7 +25,7 @@
 						<div class="login_box">
 							<div class="tit">
 								<h1>光大会员</h1>
-								<span class="errorMsg" name="msg" id="msg" th:text="${#request.getAttribute('msg')!=null}?${#request.getAttribute('msg')}:''" ></span>
+								<span class="errorMsg" name="msg" id="msg"  th:text="${#request.getAttribute('msg')}"></span>
 <!--								<input type="hidden" name="msg" id="msg" th:value="${msg}"/>-->
 <!--								<span th:name="backname" th:if="${#request.getAttribute('username')}">显示<span th:text="${#request.getAttribute('username')}"></span></span>-->
 <!--								<span  th:name="backpwd" th:if="${#request.getAttribute('password')}">显示<span th:text="${#request.getAttribute('password')}"></span></span>-->
@@ -39,12 +39,12 @@
 								<form action="submitLogin" method="post">
 									<label>用户名称：</label>
 									<input class="itxt" type="text" placeholder="请输入用户名"
-										   autocomplete="off" tabindex="1" name="username" th:value="${#request.getAttribute('username')!=null}?${#request.getAttribute('username')}:''" />
+										   autocomplete="off" tabindex="1" name="username" th:value="${#request.getAttribute('username')}" />
 									<br />
 									<br />
 									<label>用户密码：</label>
 									<input class="itxt" type="password" placeholder="请输入密码" autocomplete="off" tabindex="1" name="password"
-										   th:value="${#request.getAttribute('password')!=null}?${#request.getAttribute('username')}:''"/>
+										   th:value="${#request.getAttribute('password')}"/>
 									<br />
 									<br />
 									<input type="submit" value="登录" id="sub_btn" />

@@ -44,7 +44,7 @@
 					return false;
 				}
 				$("#frontmsg").text("");
-				$("#msg").text("");
+				$("#backmsg").text("");
 			});
 
 		});
@@ -84,7 +84,7 @@
 				<div class="tit">
 					<h1>注册光大会员</h1>
 					<span class="errorMsg" name="frontmsg" id="frontmsg"></span>
-					<span class="errorMsg" name="msg" id="msg" th:text="${#request.getAttribute('msg')!=null}?${#request.getAttribute('msg')}:''" ></span>
+					<span class="errorMsg" name="backmsg" id="backmsg" th:text="${#request.getAttribute('msg')}" ></span>
 <!--					<input type="hidden" id="" id="backmsg" name="backmsg" th:value="${msg}">-->
 <!--					<span th:type="hidden" th:id="backmsg" th:name="backmsg" th:data="${msg}"></span>-->
 				</div>
