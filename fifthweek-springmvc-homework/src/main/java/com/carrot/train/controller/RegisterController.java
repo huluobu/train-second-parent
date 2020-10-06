@@ -1,6 +1,6 @@
 package com.carrot.train.controller;
 
-import com.carrot.train.enetity.User;
+import com.carrot.train.entity.User;
 import com.carrot.train.service.Imp.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,8 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @Author: carrot

@@ -1,4 +1,4 @@
-package com.carrot.train.enetity;
+package com.carrot.train.entity;
 
 public class User {
     private Integer id;

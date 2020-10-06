@@ -1,6 +1,6 @@
 package com.carrot.train.controller;
 
-import com.carrot.train.enetity.User;
+import com.carrot.train.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

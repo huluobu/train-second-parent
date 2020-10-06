@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd   ">
+
+    <!--  注解模式  -->
+    <context:component-scan base-package="com.carrot.train.*"></context:component-scan>
+
+    <mvc:annotation-driven/>
+
+    <mvc:default-servlet-handler/>
+
+<!--    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+<!--        <property name="prefix" value="/pages/"></property>-->
+<!--        <property name="suffix" value=".html"></property>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash;  Thymeleaf视图解析器  &ndash;&gt;-->
+<!--    <bean id="viewResolver2" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">-->
+<!--        <property name="order" value="1"/>-->
+<!--        <property name="characterEncoding" value="UTF-8"/>-->
+<!--        <property name="templateEngine" ref="templateEngine"/>-->
+<!--        <property name="contentType" value="text/html"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="templateEngine" class="org.thymeleaf.spring5.SpringTemplateEngine">-->
+<!--        <property name="templateResolver" ref="templateResolver"></property>-->
+<!--    </bean>-->
+
+<!--    <bean id="templateResolver" class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">-->
+<!--        <property name="prefix" value="/pages/"></property>-->
+<!--        <property name="suffix" value=".html"></property>-->
+<!--        <property name="templateMode" value="HTML5"></property>-->
+<!--        <property name="characterEncoding" value="UTF-8"></property>-->
+<!--    </bean>-->
+
+  <!--  <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+        <property name="order" value="1"/>
+    </bean>
+
+
+&lt;!&ndash;    国际化&ndash;&gt;
+    <bean id="messageSource"
+          class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        &lt;!&ndash; 表示多语言配置文件在根路径下，以language开头的文件 &ndash;&gt;
+        <property name="basename" value="i18n.i18n_EN" />
+        <property name="useCodeAsDefaultMessage" value="true" />
+    </bean>
+
+    &lt;!&ndash; 获取本地化信息 &ndash;&gt;
+    <mvc:interceptors>
+        <bean id="localeChangeInterceptor"
+              class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="lang" />
+        </bean>
+    </mvc:interceptors>
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />-->
+
+
+<!--        &lt;!&ndash;  配置模式   &ndash;&gt;-->
+<!--        <bean id="simpleUrlHandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">-->
+<!--            <property name="mappings">-->
+<!--                <props>-->
+<!--                    <prop key="hello">helloController</prop>-->
+<!--                </props>-->
+<!--            </property>-->
+<!--        </bean>-->
+
+<!--        <bean id="helloController" class="com.carrot.train.spring.HelloController"></bean>-->
+
+</beans>

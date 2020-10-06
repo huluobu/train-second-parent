@@ -1,9 +1,7 @@
 package com.carrot.train.controller;
 
-import com.carrot.train.enetity.User;
+import com.carrot.train.entity.User;
 import com.carrot.train.service.Imp.UserServiceImp;
-import com.carrot.train.service.UserService;
-import org.omg.CORBA.UserException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.carrot.train.mapper.UsersMapper">
+<mapper namespace="com.carrot.train.mapper.FilmMapper">
 
     <insert id="insert" parameterType="com.carrot.train.entity.User">
-        INSERT INTO f_user(Id, username, password, email)
-        VALUES(#{id}, #{username}, #{username}, #{email});
+        INSERT INTO f_film(id, filmname, filminfo, filmprice,sales,imgpath,status,)
+        VALUES(#{id}, #{filmname}, #{filminfo}, #{email},#{email},#{email},#{email},#{email},);
     </insert>
 
     <update id="update" parameterType="com.carrot.train.entity.User">
