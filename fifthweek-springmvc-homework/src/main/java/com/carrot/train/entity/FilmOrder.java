@@ -22,5 +22,6 @@ public class FilmOrder {
     private Date updatatime;
     private String seatnum;
     private BigDecimal totalprice;
+    private BigDecimal price;
     private String status;
 }

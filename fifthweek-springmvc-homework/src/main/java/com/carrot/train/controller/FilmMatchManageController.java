@@ -28,7 +28,7 @@ public class FilmMatchManageController {
 
     }
 
-    @RequestMapping("/hello8")
+
     public  void  updateMovieMatch() {
         FilmMatch filmMatch = (FilmMatch) filmMatchServiceImp.findByPrimaryKey(1);
         filmMatch.setFilmprice(new BigDecimal(70));
