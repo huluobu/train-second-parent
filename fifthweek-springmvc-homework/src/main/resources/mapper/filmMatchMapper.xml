@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.carrot.train.mapper.FilmMatchMapper">
+
+    <insert id="insert" parameterType="com.carrot.train.entity.FilmMatch">
+        INSERT INTO f_filmmatch(id, filmid,location,halltype,filmprice,sales,begindate,reseats,status)
+        VALUES(#{id}, #{filmid}, #{location}, #{halltype},#{filmprice},#{sales},#{begindate},#{reseats},#{status})
+    </insert>
+
+    <update id="update" parameterType="com.carrot.train.entity.FilmMatch">
+        UPDATE f_filmmatch
+        <set>
+            <if test="null != filmid">filmid=#{filmid},</if>
+            <if test="null != location">location=#{location},</if>
+            <if test="null != halltype">halltype=#{halltype},</if>
+            <if test="null != filmprice">filmprice=#{filmprice},</if>
+            <if test="null != sales">sales=#{sales},</if>
+            <if test="null != begindate">begindate=#{begindate},</if>
+            <if test="null != reseats">reseats=#{reseats},</if>
+            <if test="null != status">reseats=#{status}</if>
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
+    <select id="findByPrimaryKey" parameterType="Integer" resultType="com.carrot.train.entity.FilmMatch">
+        SELECT * FROM f_filmmatch WHERE id=#{primaryKey}
+    </select>
+
+
+</mapper>

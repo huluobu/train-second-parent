@@ -31,7 +31,7 @@ public class FilmController {
 
     }
 
-    @RequestMapping("/hello8")
+//    @RequestMapping("/hello8")
     public void updateMovie() {
         Film film = (Film) filmServiceImp.findByPrimaryKey(1);
         film.setFilmtype("动作");

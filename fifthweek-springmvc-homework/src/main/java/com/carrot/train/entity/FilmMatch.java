@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -18,6 +19,8 @@ public class FilmMatch {
     private Integer filmid;
     private String location;
     private String halltype;
+    private BigDecimal filmprice;
+    private Integer sales;
     private Date begindate;
     private String reseats;
     private String status;
