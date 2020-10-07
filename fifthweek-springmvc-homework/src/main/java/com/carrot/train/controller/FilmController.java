@@ -8,40 +8,73 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @Author: carrot
  * @Date: 2020/10/6 9:52
  */
+@RequestMapping("manager/film")
 @Controller
 public class FilmController {
     @Autowired
     private FilmServiceImp filmServiceImp;
 
-    public void insertMovie() {
-        Film film = new Film();
-        film.setStatus("Y");
-        film.setFilmname("叶问");
-        film.setFilmtype("动作");
-        film.setFilmprice(new BigDecimal(50));
-        film.setFilminfo("甄子丹");
-        film.setSales(0);
-        filmServiceImp.insert(film);
 
+    @RequestMapping("/list")
+    private String selectAllFilm(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+        List<Film> list = filmServiceImp.queryAllFilm();
+        httpServletRequest.setAttribute("filmlist",list);
+        System.out.println(list);
+        return "/manager/book_manager";
     }
 
-//    @RequestMapping("/hello8")
-    public void updateMovie() {
-        Film film = (Film) filmServiceImp.findByPrimaryKey(1);
-        film.setFilmtype("动作");
-//        film.setStatus("Y");
-//        film.setFilmname("叶问");
-//        film.setFilmtype("动作");
-//        film.setFilmprice(new BigDecimal(50));
-//        film.setFilminfo("甄子丹");
-//        film.setSales(0);
-        filmServiceImp.update(film);
 
+    @RequestMapping("/add")
+    public String insertMovie(HttpServletRequest request,HttpServletResponse response,String filmname,
+                            String filmtype,String filminfo,Double filmprice,Integer sales,
+                            String status) {
+
+        Film film = new Film();
+        film.setStatus(status);
+        film.setFilmname(filmname);
+        film.setFilmtype(filmtype);
+        film.setFilmprice(new BigDecimal(filmprice));
+        film.setFilminfo(filminfo);
+        film.setSales(sales);
+        filmServiceImp.insert(film);
+        return "redirect:list";
+    }
+
+    @RequestMapping("/delete")
+    public String deleteMovie(HttpServletRequest request,HttpServletResponse response,Integer id) {
+        Film film = (Film) filmServiceImp.findByPrimaryKey(id);
+        film.setStatus("N");
+        filmServiceImp.update(film);
+        return "redirect:list";
+    }
+
+    @RequestMapping("/query")
+    public String queryMovie(HttpServletRequest request,HttpServletResponse response,Integer id) {
+        Film film = (Film) filmServiceImp.findByPrimaryKey(id);
+        request.setAttribute("film",film);
+        return "/manager/book_edit";
+    }
+    @RequestMapping("/update")
+    public String updateMovie(HttpServletRequest request,HttpServletResponse response, Integer id,String filmname,
+                            String filmtype,String filminfo,Double filmprice,Integer sales, String status) {
+
+        Film film = (Film) filmServiceImp.findByPrimaryKey(id);
+        film.setStatus(status);
+        film.setFilmname(filmname);
+        film.setFilmtype(filmtype);
+        film.setFilmprice(new BigDecimal(filmprice));
+        film.setFilminfo(filminfo);
+        film.setSales(sales);
+        filmServiceImp.update(film);
+        return "redirect:list";
     }
 }

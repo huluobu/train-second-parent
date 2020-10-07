@@ -1,71 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>图书管理</title>
-<link type="text/css" rel="stylesheet" href="../../static/css/style.css" >
+	<base href="http://localhost:8080/film/">
+<link type="text/css" rel="stylesheet" href="static/css/style.css" >
+	<script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$("a.deleteClass").click(function () {
+				// 在事件的function函数中，有一个this对象。这个this对象，是当前正在响应事件的dom对象。
+				return confirm("你确定要删除【" +  $(this).parent().parent().find("td:eq(0)").text() +":"+$(this).parent().parent().find("td:eq(1)").text()+"】?");
+			});
+		});
+	</script>
 </head>
 <body>
 	
 	<div id="header">
-			<img class="logo_img" alt="" src="../../static/img/logo.gif" >
-			<span class="wel_word">图书管理系统</span>
+			<img class="logo_img" alt="" src="static/img/logo.gif" >
+			<span class="wel_word">电影管理系统</span>
 			<div>
-				<a href="book_manager.html">图书管理</a>
-				<a href="order_manager.html">订单管理</a>
-				<a href="../../index.html">返回商城</a>
+				<a href="manager/film/list">电影管理</a>
+				<a href="pages/manager/order_manager.html">场次管理</a>
+				<a href="index.html">返回商城</a>
 			</div>
 	</div>
 	
 	<div id="main">
 		<table>
 			<tr>
-				<td>名称</td>
+				<td>id</td>
+				<td>电影名</td>
+				<td>类型</td>
+				<td>创作人员</td>
 				<td>价格</td>
-				<td>作者</td>
-				<td>销量</td>
-				<td>库存</td>
-				<td colspan="2">操作</td>
+				<td>观影人次</td>
+				<td>状态</td>
+				<td colspan="3">操作</td>
 			</tr>		
-			<tr>
-				<td>时间简史</td>
-				<td>20.00</td>
-				<td>霍金</td>
-				<td>200</td>
-				<td>400</td>
-				<td><a href="book_edit.html">修改</a></td>
-				<td><a href="#">删除</a></td>
+			<tr th:each="film : ${#request.getAttribute('filmlist')}" >
+				<td name="filmid" id="filmid" th:text="${film.id}"></td>
+				<td name="filmname" id="filmname" th:text="${film.filmname}"></td>
+				<td th:text="${film.filmtype}"></td>
+				<td th:text="${film.filminfo}"></td>
+				<td th:text="${film.filmprice}"></td>
+				<td th:text="${film.sales}"></td>
+				<td th:text="${film.status}"></td>
+<!--				<td><a href="book_edit.html">修改</a></td>-->
+				<td><a class="deleteClass" th:href="@{manager/film/query(id=${film.id})}">修改</a></td>
+<!--				<td><a href="manager/film/delete&id='${film.id}'">删除</a></td>-->
+				<td><a class="deleteClass" th:href="@{manager/film/delete(id=${film.id})}">删除</a></td>
 			</tr>	
-			
-			<tr>
-				<td>时间简史</td>
-				<td>20.00</td>
-				<td>霍金</td>
-				<td>200</td>
-				<td>400</td>
-				<td><a href="book_edit.html">修改</a></td>
-				<td><a href="#">删除</a></td>
-			</tr>	
-			
-			<tr>
-				<td>时间简史</td>
-				<td>20.00</td>
-				<td>霍金</td>
-				<td>200</td>
-				<td>400</td>
-				<td><a href="book_edit.html">修改</a></td>
-				<td><a href="#">删除</a></td>
-			</tr>	
-			
-			<tr>
-				<td>时间简史</td>
-				<td>20.00</td>
-				<td>霍金</td>
-				<td>200</td>
-				<td>400</td>
-				<td><a href="book_edit.html">修改</a></td>
-				<td><a href="#">删除</a></td>
-			</tr>	
+
 			
 			<tr>
 				<td></td>
@@ -74,7 +61,8 @@
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><a href="book_edit.html">添加图书</a></td>
+				<td></td>
+				<td><a href="pages/manager/book_edit.html">添加电影</a></td>
 			</tr>	
 		</table>
 	</div>

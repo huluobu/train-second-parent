@@ -28,8 +28,9 @@
         SELECT * FROM f_film WHERE id=#{primaryKey}
     </select>
 
-    <select id="findByUserName" parameterType="String" resultType="com.carrot.train.entity.Film">
-        SELECT * FROM f_user WHERE filmname=#{primaryKey}
+
+    <select id="selectAllFilm" resultType="com.carrot.train.entity.Film">
+        SELECT * FROM f_film
     </select>
 
 </mapper>

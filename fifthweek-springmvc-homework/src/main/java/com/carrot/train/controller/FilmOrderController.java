@@ -25,7 +25,7 @@ public class FilmOrderController {
         filmOrderImp.insert(filmOrder);
     }
 
-    @RequestMapping("/hello8")
+
     private  void  updateMovieOrder() {
         FilmOrder filmOrder = (FilmOrder) filmOrderImp.findByPrimaryKey(1);
         filmOrder.setPrice(new BigDecimal("72"));

@@ -18,7 +18,7 @@
             <if test="null != sales">sales=#{sales},</if>
             <if test="null != begindate">begindate=#{begindate},</if>
             <if test="null != reseats">reseats=#{reseats},</if>
-            <if test="null != status">reseats=#{status}</if>
+            <if test="null != status">status=#{status}</if>
         </set>
         <where>
             id=#{id}

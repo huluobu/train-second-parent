@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>编辑图书</title>
+<title>编辑电影</title>
+	<base href="http://localhost:8080/film/">
 <link type="text/css" rel="stylesheet" href="static/css/style.css" >
 <style type="text/css">
 	h1 {
@@ -21,32 +22,37 @@
 </head>
 <body>
 		<div id="header">
-			<img class="logo_img" alt="" src="../../static/img/logo.gif" >
-			<span class="wel_word">编辑图书</span>
+			<img class="logo_img" alt="" src="static/img/logo2.jpg" >
+			<span class="wel_word">编辑电影</span>
 			<div>
-				<a href="book_manager.html">图书管理</a>
-				<a href="order_manager.html">订单管理</a>
-				<a href="../../index.html">返回商城</a>
+				<a href="manager/film/list">电影管理</a>
+				<a href="pages/manager/order_manager.html">场次管理</a>
+				<a href="index.html">返回商城</a>
 			</div>
 		</div>
 		
 		<div id="main">
-			<form action="book_manager.html">
+<!--			<form action="manager/film/add" method="post" accept-charset="UTF-8">-->
+			<form th:action="@{manager/film/{action}(action=${param.id}?'update':'add',id=${param.id})}" method="post" accept-charset="UTF-8">
 				<table>
 					<tr>
-						<td>名称</td>
+						<td>id</td>
+						<td>电影名</td>
+						<td>类型</td>
+						<td>创作人员</td>
 						<td>价格</td>
-						<td>作者</td>
-						<td>销量</td>
-						<td>库存</td>
+						<td>观影人次</td>
+						<td>状态</td>
 						<td colspan="2">操作</td>
 					</tr>		
-					<tr>
-						<td><input name="book_name" type="text" value="时间简史"/></td>
-						<td><input name="book_price" type="text" value="30.00"/></td>
-						<td><input name="book_author" type="text" value="霍金"/></td>
-						<td><input name="book_sales" type="text" value="200"/></td>
-						<td><input name="book_stock" type="text" value="300"/></td>
+					<tr th:object="${#request.getAttribute('film')}">
+						<td name="id" th:text="*{id}" ></td>
+						<td><input name="filmname" type="text" th:value="*{filmname}"/></td>
+						<td><input name="filmtype" type="text" th:value="*{filmtype}"/></td>
+						<td><input name="filminfo" type="text" th:value="*{filminfo}"/></td>
+						<td><input name="filmprice" type="text" th:value="*{filmprice}"/></td>
+						<td><input name="sales" type="text" th:value="*{sales}"/></td>
+						<td><input name="status" type="text" th:value="*{status}"/></td>
 						<td><input type="submit" value="提交"/></td>
 					</tr>	
 				</table>
