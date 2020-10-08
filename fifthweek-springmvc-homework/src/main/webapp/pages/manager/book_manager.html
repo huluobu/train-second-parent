@@ -12,6 +12,11 @@
 				// 在事件的function函数中，有一个this对象。这个this对象，是当前正在响应事件的dom对象。
 				return confirm("你确定要删除【" +  $(this).parent().parent().find("td:eq(0)").text() +":"+$(this).parent().parent().find("td:eq(1)").text()+"】?");
 			});
+
+			$("a.updateClass").click(function () {
+				// 在事件的function函数中，有一个this对象。这个this对象，是当前正在响应事件的dom对象。
+				return confirm("你确定要修改【" +  $(this).parent().parent().find("td:eq(0)").text() +":"+$(this).parent().parent().find("td:eq(1)").text()+"】?");
+			});
 		});
 	</script>
 </head>
@@ -48,7 +53,7 @@
 				<td th:text="${film.sales}"></td>
 				<td th:text="${film.status}"></td>
 <!--				<td><a href="book_edit.html">修改</a></td>-->
-				<td><a class="deleteClass" th:href="@{manager/film/query(id=${film.id})}">修改</a></td>
+				<td><a class="updateClass" th:href="@{manager/film/query(id=${film.id})}">修改</a></td>
 <!--				<td><a href="manager/film/delete&id='${film.id}'">删除</a></td>-->
 				<td><a class="deleteClass" th:href="@{manager/film/delete(id=${film.id})}">删除</a></td>
 			</tr>	

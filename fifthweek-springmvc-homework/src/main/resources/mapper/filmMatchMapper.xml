@@ -26,8 +26,13 @@
     </update>
 
     <select id="findByPrimaryKey" parameterType="Integer" resultType="com.carrot.train.entity.FilmMatch">
-        SELECT * FROM f_filmmatch WHERE id=#{primaryKey}
+        SELECT * FROM f_filmmatch WHERE id=#{primaryKey};
     </select>
 
+
+
+    <select id="selectAllFilmMatch"  resultType="com.carrot.train.entity.FilmMatch">
+        SELECT * FROM f_filmmatch;
+    </select>
 
 </mapper>

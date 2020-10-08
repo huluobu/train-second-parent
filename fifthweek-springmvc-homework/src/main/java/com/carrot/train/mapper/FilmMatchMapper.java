@@ -1,6 +1,10 @@
 package com.carrot.train.mapper;
 
+import com.carrot.train.entity.Film;
+import com.carrot.train.entity.FilmMatch;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @Author: carrot
@@ -8,4 +12,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface FilmMatchMapper extends BaseMapper {
+    List<FilmMatch> selectAllFilmMatch();
 }

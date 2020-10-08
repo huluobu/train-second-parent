@@ -1,9 +1,13 @@
 package com.carrot.train.service.Imp;
 
+import com.carrot.train.entity.Film;
+import com.carrot.train.entity.FilmMatch;
 import com.carrot.train.mapper.FilmMatchMapper;
 import com.carrot.train.service.FilmMatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Author: carrot
@@ -27,5 +31,10 @@ public class FilmMatchServiceImp implements FilmMatchService {
     @Override
     public Object findByPrimaryKey(Object primaryKey) {
         return filmMatchMapper.findByPrimaryKey(primaryKey);
+    }
+
+    public List<FilmMatch> queryAllFilmMatch() {
+        List<FilmMatch> list = filmMatchMapper.selectAllFilmMatch();
+        return list;
     }
 }
