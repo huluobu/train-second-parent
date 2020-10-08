@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>影城首页</title>
-<link type="text/css" rel="stylesheet" href="static/css/style.css" >
+    <base th:ref="${#request.getScheme()+'://'+#request.getServerName()+':'+#request.getServerPort()+#request.getContextPath()}">
+<link type="text/css" rel="stylesheet" href="/static/css/style.css" >
 </head>
 <body>
 	
@@ -13,7 +14,7 @@
 			<img class="logo_img" alt="" src="static/img/logo2.gif" >
 			<span class="wel_word">影城订票</span>
 <!--            <input name="msg" id="msg" th:value="${session.username}"/>-->
-            <span name="sessionmsg" class="wel_word" th:text="${session.username==null}?'session':'not exist'"></span>
+            <span name="sessionmsg" class="wel_word" th:text="${session.values()}"></span>
 			<div th:if="${session.username==null}">
 <!--                <a href="hello2?username=carrot&age=12">test</a>|-->
 <!--                <a href="pages/error.html">error</a> |-->
