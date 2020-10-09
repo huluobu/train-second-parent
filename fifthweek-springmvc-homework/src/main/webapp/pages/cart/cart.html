@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>购物车</title>
@@ -11,6 +11,7 @@
 	<div id="header">
 			<img class="logo_img" alt="" src="static/img/logo.gif" >
 			<span class="wel_word">购物车</span>
+			<span name="sessionmsg" class="wel_word" th:text="${session.username}"></span>
 			<div>
 				<span>欢迎<span class="um_span">韩总</span>光临尚硅谷书城</span>
 				<a href="pages/order/order.html">我的订单</a>
