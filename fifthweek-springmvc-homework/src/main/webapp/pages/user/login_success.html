@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>光大会员</title>
 <!--	<base href="http://localhost:8080/film/">-->
-	<base th:ref="${#request.getScheme()+'://'+#request.getServerName()+':'+#request.getServerPort()+#request.getContextPath()}">
+<!--	<base th:ref="${#request.getScheme()+'://'+#request.getServerName()+':'+#request.getServerPort()+#request.getContextPath()}">-->
 </head>
 <script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
 <script type="text/javascript">
@@ -29,16 +29,17 @@
 				<span name="sessionmsg" class="wel_word" th:text="${session.values()}"></span>
 				<div>
 					<span>欢迎<span class="um_span" th:text="${session.username}"/><span>光大影城</span>
+						<a th:href="@{pages/cart/cart.html}">购物车</a>
 					<a href="pages/order/order.html">我的订单</a>
-					<a href="pages/home.html">注销</a>
-					<a href="pages/home.html">返回</a>
+					<a href="logout">注销</a>
+					<a href="pages/home">返回</a>
 				</div>
 			</div>
 
 		
 		<div id="main">
 		
-			<h1>欢迎回来 <a href="pages/home.html">转到主页</a></h1>
+			<h1>欢迎回来 <a href="pages/home">转到主页</a></h1>
 	
 		</div>
 		

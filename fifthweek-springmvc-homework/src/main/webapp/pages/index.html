@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>影城首页</title>
-<link type="text/css" rel="stylesheet" href="static/css/style.css" >
+<link type="text/css" rel="stylesheet" href="../static/css/style.css" >
 </head>
 <body>
 	
@@ -19,9 +19,9 @@
 <!--                <a href="pages/error.html">error</a> |-->
 
 <!--				<a href="pages/user/login.html" id="login" name="login" th:class="${session.username}?'':'myHidestyle'">登录</a>-->
-                <a href="pages/user/login.html" id="login" name="login" >登录</a>
+                <a href="user/login.html" id="login" name="login" >登录</a>
 <!--                <a th:href="@{pages/user/login.html}" th:if="${session.username==null}">登录</a>|-->
-				<a href="pages/user/regist.html">注册</a>
+				<a href="user/regist.html">注册</a>
 <!--                <a th:href="@{pages/user/regist.html}" th:if="${session.username==null}">注册</a>|-->
 <!--				<a href="pages/cart/cart.html">我的订单</a>-->
 <!--&lt;!&ndash;                <a th:href="@{pages/cart/cart.html}" th:if="${session.username!=null}">我的订单</a>|&ndash;&gt;-->
@@ -30,9 +30,9 @@
 			</div>
             <div th:style="${session.username==null}?'display:none;':'padding:0px 0px 0px 20px;'">
                 <!--                <a th:href="@{pages/user/regist.html}" th:if="${session.username==null}">注册</a>|-->
-                <a href="pages/cart/cart.html">我的订单</a>
+                <a href="cart/cart.html">我的订单</a>
                 <!--                <a th:href="@{pages/cart/cart.html}" th:if="${session.username!=null}">我的订单</a>|-->
-                <a href="pages/manager/manager.html">后台管理</a>
+                <a href="manager/manager.html">后台管理</a>
                 <!--                <a th:href="@{pages/manager/manager.html}" th:if="${session.username=='admin'}">后台管理</a>|-->
             </div>
 <!--            <form action="hello5" method="Post">-->
@@ -83,7 +83,7 @@
 
 			<div class="b_list">
 				<div class="img_div">
-					<img class="book_img" alt="" src="static/img/logo2.jpg" />
+					<img class="book_img" alt="" src="../static/img/logo2.jpg" />
 				</div>
 				<div class="book_info">
 					<div class="book_name">
@@ -106,7 +106,7 @@
 
             <div class="b_list">
                 <div class="img_div">
-                    <img class="book_img" alt="" src="static/img/logo2.jpg" />
+                    <img class="book_img" alt="" src="../static/img/logo2.jpg" />
                 </div>
                 <div class="book_info">
                     <div class="book_name">
@@ -129,7 +129,7 @@
 
             <div class="b_list">
                 <div class="img_div">
-                    <img class="book_img" alt="" src="static/img/logo2.jpg" />
+                    <img class="book_img" alt="" src="../static/img/logo2.jpg" />
                 </div>
                 <div class="book_info">
                     <div class="book_name">
@@ -194,7 +194,7 @@
 		</span>
 	</div>
 </body>
-<script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../static/script/jquery-1.7.2.js"></script>
 <script type="text/javascript">
     var bm=$("#msg").val()
 /*    if (bm != "") {

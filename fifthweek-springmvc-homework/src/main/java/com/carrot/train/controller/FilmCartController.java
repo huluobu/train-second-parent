@@ -12,14 +12,17 @@ import javax.servlet.http.HttpSession;
  * @Date: 2020/10/9 08:50
  * @Description:
  */
+@RequestMapping("cart")
 @Controller
 public class FilmCartController {
 
-    @RequestMapping("cart/list")
+    @RequestMapping("/page")
     public String toCart(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession(true);
         System.out.println(session);
 
         return "cart/cart";
     }
+
+
 }

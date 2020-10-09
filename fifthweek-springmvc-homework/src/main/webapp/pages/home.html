@@ -3,15 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta charset="UTF-8">
-<title>影城首页</title>
-    <base th:ref="${#request.getScheme()+'://'+#request.getServerName()+':'+#request.getServerPort()+#request.getContextPath()}">
-<link type="text/css" rel="stylesheet" href="/static/css/style.css" >
-    <script type="javascript">
-        $(function () {
-            alert()
-        })
-    </script>
+    <meta charset="UTF-8">
+    <base href="http://localhost:8080/film/">
+    <title>影城首页</title>
+    <link type="text/css" rel="stylesheet" href="static/css/style.css" >
 </head>
 <body>
 	
@@ -19,40 +14,17 @@
 			<img class="logo_img" alt="" src="static/img/logo2.gif" >
 			<span class="wel_word">影城订票</span>
 
-<!--            <input name="msg" id="msg" th:value="${session.username}"/>-->
             <span name="sessionmsg" class="wel_word" th:text="${session.values()}"></span>
-			<div th:if="${session.username==null}">
-<!--                <a href="hello2?username=carrot&age=12">test</a>|-->
-<!--                <a href="pages/error.html">error</a> |-->
-
-<!--				<a href="pages/user/login.html" id="login" name="login" th:class="${session.username}?'':'myHidestyle'">登录</a>-->
+			<div th:style="${session.username==null}?'display:block;':'display:none;'">
                 <a href="pages/user/login.html" id="login" name="login" >登录</a>
-<!--                <a th:href="@{pages/user/login.html}" th:if="${session.username==null}">登录</a>|-->
 				<a href="pages/user/regist.html">注册</a>
-<!--                <a th:href="@{pages/user/regist.html}" th:if="${session.username==null}">注册</a>|-->
-<!--				<a href="pages/cart/cart.html">我的订单</a>-->
-<!--&lt;!&ndash;                <a th:href="@{pages/cart/cart.html}" th:if="${session.username!=null}">我的订单</a>|&ndash;&gt;-->
-<!--				<a href="pages/manager/manager.html">后台管理</a>-->
-<!--                <a th:href="@{pages/manager/manager.html}" th:if="${session.username=='admin'}">后台管理</a>|-->
+
 			</div>
-            <div th:style="${session.username==null}?'display:none;':'padding:0px 0px 0px 20px;'">
-                <!--                <a th:href="@{pages/user/regist.html}" th:if="${session.username==null}">注册</a>|-->
+            <div th:style="${session.username!=null}?'display:block;':'display:none;'">
                 <a href="pages/cart/cart.html">我的订单</a>
-                <!--                <a th:href="@{pages/cart/cart.html}" th:if="${session.username!=null}">我的订单</a>|-->
+                <a href="cart/page">购物车</a>
                 <a href="pages/manager/manager.html">后台管理</a>
-                <!--                <a th:href="@{pages/manager/manager.html}" th:if="${session.username=='admin'}">后台管理</a>|-->
             </div>
-<!--            <form action="hello5" method="Post">-->
-<!--                <label><spring:message code="i18n.username"/>用户名称：</label>-->
-<!--                <input type="text" name="username" value="Tom"/>-->
-<!--                <br>-->
-<!--                <label><spring:message code="i18n.password"/>密码：</label>-->
-<!--                <input type="text" name="username" value="123456"/>-->
-<!--                <br>-->
-<!--                email: <input type="text" name="email" value="tom@carrot.com"/>-->
-<!--                <br>-->
-<!--                <input type="submit" value="Submit"/>-->
-<!--            </form>-->
             <br><br>
 	</div>
 	<div id="main">
@@ -88,22 +60,23 @@
 				</form>
 			</div>
 
-			<div class="b_list">
-				<div class="img_div">
+			<div class="b_list" th:each="film : ${#request.getAttribute('film')}">
+                <span id="filmid" name="filmname" th:text="${film.id}"></span>>
+                <div class="img_div">
 					<img class="book_img" alt="" src="static/img/logo2.jpg" />
 				</div>
 				<div class="book_info">
 					<div class="book_name">
 						<span class="sp1">电影名:</span>
-						<span class="sp2">八佰</span>
+						<span class="sp2" th:text="${film.filmname}"></span>
 					</div>
 					<div class="book_author">
 						<span class="sp1">电影类型:</span>
-						<span class="sp2">战争/动作</span>
+						<span class="sp2" th:text="${film.filmtype}"></span>
 					</div>
 					<div class="book_price">
 						<span class="sp1">主演：</span>
-						<span class="sp2">姜武</span>
+						<span class="sp2" th:text="${film.filminfo}">姜武</span>
 					</div>
 					<div class="book_add">
 						<button>购票</button>
@@ -111,74 +84,10 @@
 				</div>
 			</div>
 
-            <div class="b_list">
-                <div class="img_div">
-                    <img class="book_img" alt="" src="static/img/logo2.jpg" />
-                </div>
-                <div class="book_info">
-                    <div class="book_name">
-                        <span class="sp1">电影名:</span>
-                        <span class="sp2">信条</span>
-                    </div>
-                    <div class="book_author">
-                        <span class="sp1">电影类型:</span>
-                        <span class="sp2">科幻/动作</span>
-                    </div>
-                    <div class="book_price">
-                        <span class="sp1">主演：</span>
-                        <span class="sp2">克里斯托弗·诺兰</span>
-                    </div>
-                    <div class="book_add">
-                        <button>购票</button>
-                    </div>
-                </div>
+
             </div>
 
-            <div class="b_list">
-                <div class="img_div">
-                    <img class="book_img" alt="" src="static/img/logo2.jpg" />
-                </div>
-                <div class="book_info">
-                    <div class="book_name">
-                        <span class="sp1">电影名:</span>
-                        <span class="sp2">小妇人</span>
-                    </div>
-                    <div class="book_author">
-                        <span class="sp1">电影类型:</span>
-                        <span class="sp2">剧情/悬疑</span>
-                    </div>
-                    <div class="book_price">
-                        <span class="sp1">主演:</span>
-                        <span class="sp2">格蕾塔·葛韦格</span>
-                    </div>
-                    <div class="book_add">
-                        <button>购票</button>
-                    </div>
-                </div>
-            </div>
 
-<!--            <div class="b_list">
-                <div class="img_div">
-                    <img class="book_img" alt="" src="static/img/logo2.jpg" />
-                </div>
-                <div class="book_info">
-                    <div class="book_name">
-                        <span class="sp1">电影名:</span>
-                        <span class="sp2">八佰</span>
-                    </div>
-                    <div class="book_author">
-                        <span class="sp1">电影类型:</span>
-                        <span class="sp2">战争/动作</span>
-                    </div>
-                    <div class="book_price">
-                        <span class="sp1">价格:</span>
-                        <span class="sp2">主演：姜武</span>
-                    </div>
-                    <div class="book_add">
-                        <button>购票</button>
-                    </div>
-                </div>
-            </div>-->
 		</div>
 		
 		<div id="page_nav">
