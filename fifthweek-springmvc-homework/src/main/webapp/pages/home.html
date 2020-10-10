@@ -45,14 +45,15 @@
                 <li>怀柔店</li>
             </ul>-->
             <div class="book_cond">
-				<form action="" method="get">
+				<form action="searchmatch" method="get">
+                    <input name="location" type="text" th:value="CBD店"/>
 
-				    放映厅<select id="selectarea">
+				    放映厅<select name="halltype" th:value="3D">
                             <option value="3D">3D</option>
                             <option value="2D">2D</option>
                             <option value="child">child</option>
                             </select>
-                    上映日期<input  id= "selectdate" type="date" value="2020-09-14"/>
+                    上映日期<input  name= "begindatetime" type="datetime-local" />
                     <input type="submit" value="搜索" />
 <!--                    <input id="min" type="text" name="min" value=""> 元 - -->
 <!--						<input id="max" type="text" name="max" value=""> 元 -->

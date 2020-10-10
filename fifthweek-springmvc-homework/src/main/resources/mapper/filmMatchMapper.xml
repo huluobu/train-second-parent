@@ -3,6 +3,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.carrot.train.mapper.FilmMatchMapper">
 
+    <resultMap id="matchandfilm" type="com.carrot.train.entity.MatchUnionFilm">
+        <id column="id" property="id"/>
+        <result column="location" property="location"/>
+        <result column="halltype" property="halltype"/>
+        <result column="filmprice" property="filmprice"/>
+        <result column="sales" property="sales"/>
+        <result column="begindate" property="begindate"/>
+        <result column="reseats" property="reseats"/>
+        <result column="status" property="status"/>
+        <association property="film" column="filmid" select="com.carrot.train.mapper.FilmMapper.findByPrimaryId"/>
+    </resultMap>
+
     <insert id="insert" parameterType="com.carrot.train.entity.FilmMatch">
         INSERT INTO f_filmmatch(id, filmid,location,halltype,filmprice,sales,begindate,reseats,status)
         VALUES(#{id}, #{filmid}, #{location}, #{halltype},#{filmprice},#{sales},#{begindate},#{reseats},#{status})
@@ -33,6 +45,20 @@
 
     <select id="selectAllFilmMatch"  resultType="com.carrot.train.entity.FilmMatch">
         SELECT * FROM f_filmmatch;
+    </select>
+
+    <select id="selectFilmMatchByParams"  resultMap="matchandfilm" parameterType="java.util.HashMap">
+        SELECT * FROM f_filmmatch
+        <where>
+            <if test="filmid !=null ">and filmid=#{filmid}</if>
+            <if test="location!=null ">and location=#{location}</if>
+            <if test="halltype!=null ">and halltype=#{halltype}</if>
+            <if test="filmprice!=null ">and filmprice=#{filmprice}</if>
+            <if test="sales!=null ">and sales=#{sales}</if>
+            <if test="begindate!=null ">and begindate=#{begindate}</if>
+            <if test="reseats!=null ">and reseats=#{reseats}</if>
+            <if test="status!=null ">and status=#{status}</if>
+        </where>
     </select>
 
 </mapper>

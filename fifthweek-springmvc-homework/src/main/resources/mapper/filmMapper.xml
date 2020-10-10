@@ -3,6 +3,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.carrot.train.mapper.FilmMapper">
 
+    <resultMap id="filmresult" type="com.carrot.train.entity.Film">
+        <id column="id" property="id"/>
+        <result column="filmname" property="filmname"/>
+        <result column="filmtype" property="filmtype"/>
+        <result column="filminfo" property="filminfo"/>
+        <result column="filmprice" property="filmprice"/>
+        <result column="sales" property="sales"/>
+        <result column="imgpath" property="imgpath"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
     <insert id="insert" parameterType="com.carrot.train.entity.Film">
         INSERT INTO f_film(id, filmname,filmtype, filminfo, filmprice,sales,imgpath,status)
         VALUES(#{id}, #{filmname}, #{filmtype},#{filminfo}, #{filmprice},#{sales},#{imgpath},#{status})
@@ -26,6 +37,13 @@
 
     <select id="findByPrimaryKey" parameterType="Integer" resultType="com.carrot.train.entity.Film">
         SELECT * FROM f_film WHERE id=#{primaryKey}
+    </select>
+
+<!--    <select id="findByPrimaryId" parameterType="Integer" resultMap="filmresult">-->
+<!--        SELECT id fmid,filmname, filmtype, filminfo,filmprice,sales,imgpath,status FROM f_film WHERE id=#{id}-->
+<!--    </select>-->
+    <select id="findByPrimaryId" parameterType="Integer" resultMap="filmresult">
+        SELECT * FROM f_film WHERE id=#{id}
     </select>
 
 

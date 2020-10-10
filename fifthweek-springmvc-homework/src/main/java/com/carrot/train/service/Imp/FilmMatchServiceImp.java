@@ -2,12 +2,15 @@ package com.carrot.train.service.Imp;
 
 import com.carrot.train.entity.Film;
 import com.carrot.train.entity.FilmMatch;
+import com.carrot.train.entity.MatchUnionFilm;
 import com.carrot.train.mapper.FilmMatchMapper;
 import com.carrot.train.service.FilmMatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: carrot
@@ -35,6 +38,11 @@ public class FilmMatchServiceImp implements FilmMatchService {
 
     public List<FilmMatch> queryAllFilmMatch() {
         List<FilmMatch> list = filmMatchMapper.selectAllFilmMatch();
+        return list;
+    }
+
+    public List<MatchUnionFilm> queryByParams(Map<String, String> map) {
+        List<MatchUnionFilm> list = filmMatchMapper.selectFilmMatchByParams(map);
         return list;
     }
 }

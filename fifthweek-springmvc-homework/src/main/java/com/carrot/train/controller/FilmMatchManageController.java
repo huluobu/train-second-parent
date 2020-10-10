@@ -2,7 +2,9 @@ package com.carrot.train.controller;
 
 import com.carrot.train.entity.Film;
 import com.carrot.train.entity.FilmMatch;
+import com.carrot.train.entity.MatchUnionFilm;
 import com.carrot.train.service.Imp.FilmMatchServiceImp;
+import com.carrot.train.service.Imp.FilmServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -15,7 +17,9 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: carrot
@@ -24,6 +28,8 @@ import java.util.List;
 @RequestMapping("manager/match")
 @Controller
 public class FilmMatchManageController {
+    @Autowired
+    private FilmServiceImp filmServiceImp;
     @Autowired
     private FilmMatchServiceImp filmMatchServiceImp;
 
@@ -47,6 +53,8 @@ public class FilmMatchManageController {
         Date creattime = sdf.parse(bt.toString());
         FilmMatch filmMatch=new FilmMatch(null,filmid,location,halltype,new BigDecimal(filmprice),
                                             sales,creattime,reseats,status);
+//        FilmMatch filmMatch=new FilmMatch(null,7,"CBD店","3D",new BigDecimal(70),
+//                                            0,new Date(),seats,"Y");
         filmMatchServiceImp.insert(filmMatch);
         return "redirect:list";
     }
@@ -86,5 +94,21 @@ public class FilmMatchManageController {
         filmMatch.setStatus(status);
         filmMatchServiceImp.update(filmMatch);
         return "redirect:list";
+    }
+
+    @RequestMapping("/submitmatch")
+    public String querFilmByMatch(HttpServletRequest request, HttpServletResponse response,
+                                  String location,String halltype,String begindatetime) {
+        Map<String, String> params=new HashMap<>();
+//        params.put("location", location);
+//        params.put("halltype", halltype);
+//        params.put("begindatetime", begindatetime);
+        Film film = filmServiceImp.findByPrimaryId(1);
+        params.put("location", "CBD店");
+        params.put("halltype", "3D");
+        params.put("begindate", "2020-10-10 09:00:00");
+        List<MatchUnionFilm> list = filmMatchServiceImp.queryByParams(params);
+        request.setAttribute("film",list);
+        return "home";
     }
 }

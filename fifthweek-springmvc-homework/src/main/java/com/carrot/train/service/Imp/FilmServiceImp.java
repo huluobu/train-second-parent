@@ -37,4 +37,7 @@ public class FilmServiceImp implements FilmService {
         List<Film> list = filmMapper.selectAllFilm();
         return list;
     }
+    public Film findByPrimaryId(Integer primaryKey) {
+        return filmMapper.findByPrimaryId(primaryKey);
+    }
 }
