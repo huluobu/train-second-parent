@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -14,13 +16,15 @@ import java.util.Date;
  * @Author: carrot
  * @Date: 2020/10/6 12:55
  */
+@RequestMapping("order")
 @Controller
 public class FilmOrderController {
     @Autowired
     private FilmOrderImp filmOrderImp;
 
 
-    private void insertMovieOrder() {
+    @RequestMapping("/add")
+    private void insertMovieOrder(HttpServletRequest request, HttpServletResponse response, Integer matchid) {
         FilmOrder filmOrder = new FilmOrder(null, 1, "1", new Date(),new Date(),"1",null,null,"Y");
         filmOrderImp.insert(filmOrder);
     }

@@ -50,6 +50,7 @@
     <select id="selectFilmMatchByParams"  resultMap="matchandfilm" parameterType="java.util.HashMap">
         SELECT * FROM f_filmmatch
         <where>
+            <if test="id !=null ">and id=#{id}</if>
             <if test="filmid !=null ">and filmid=#{filmid}</if>
             <if test="location!=null ">and location=#{location}</if>
             <if test="halltype!=null ">and halltype=#{halltype}</if>

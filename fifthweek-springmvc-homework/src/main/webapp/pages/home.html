@@ -7,6 +7,17 @@
     <base href="http://localhost:8080/film/">
     <title>影城首页</title>
     <link type="text/css" rel="stylesheet" href="static/css/style.css" >
+	<script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
+	<script type="text/javascript">
+
+		// $(function () {
+		// 	$("butten.addtoseats").click(function () {
+		// 		var id=$(this).attr("matchid")
+		// 		location.href="http://localhost:8080/film/cart/addseats?matchid="+id;
+		// 	})
+		// })
+
+	</script>
 </head>
 <body>
 	
@@ -61,26 +72,27 @@
 				</form>
 			</div>
 
-			<div class="b_list" th:each="film : ${#request.getAttribute('film')}">
-                <span id="filmid" name="filmname" th:text="${film.id}"></span>>
+			<div class="b_list" th:each="filmmatch : ${#request.getAttribute('film')}">
+
                 <div class="img_div">
 					<img class="book_img" alt="" src="static/img/logo2.jpg" />
 				</div>
+				<span id="filmid" name="filmname"  type="hidden" th:text="${filmmatch.id}"></span>>
 				<div class="book_info">
 					<div class="book_name">
 						<span class="sp1">电影名:</span>
-						<span class="sp2" th:text="${film.filmname}"></span>
+						<span class="sp2" th:text="${filmmatch.film.filmname}"></span>
 					</div>
 					<div class="book_author">
 						<span class="sp1">电影类型:</span>
-						<span class="sp2" th:text="${film.filmtype}"></span>
+						<span class="sp2" th:text="${filmmatch.film.filmtype}"></span>
 					</div>
 					<div class="book_price">
 						<span class="sp1">主演：</span>
-						<span class="sp2" th:text="${film.filminfo}">姜武</span>
+						<span class="sp2" th:text="${filmmatch.film.filminfo}">姜武</span>
 					</div>
 					<div class="book_add">
-						<button>购票</button>
+						<a  th:class="addtoseats"  th:href="@{cart/addseats(matchid=${filmmatch.id})}">购票</a>
 					</div>
 				</div>
 			</div>
