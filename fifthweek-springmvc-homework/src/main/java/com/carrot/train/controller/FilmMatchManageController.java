@@ -100,13 +100,13 @@ public class FilmMatchManageController {
     public String querFilmByMatch(HttpServletRequest request, HttpServletResponse response,
                                   String location,String halltype,String begindatetime) {
         Map<String, String> params=new HashMap<>();
-//        params.put("location", location);
-//        params.put("halltype", halltype);
-//        params.put("begindatetime", begindatetime);
+        params.put("location", location);
+        params.put("halltype", halltype);
+        params.put("begindate", begindatetime);
         Film film = filmServiceImp.findByPrimaryId(1);
-        params.put("location", "CBD店");
-        params.put("halltype", "3D");
-        params.put("begindate", "2020-10-10 09:00:00");
+//        params.put("location", "CBD店");
+//        params.put("halltype", "3D");
+//        params.put("begindate", "2020-10-10 09:00:00");
         List<MatchUnionFilm> list = filmMatchServiceImp.queryByParams(params);
         request.setAttribute("film",list);
         return "home";

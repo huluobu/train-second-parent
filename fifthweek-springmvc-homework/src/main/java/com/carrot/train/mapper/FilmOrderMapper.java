@@ -1,6 +1,11 @@
 package com.carrot.train.mapper;
 
+import com.carrot.train.entity.FilmOrder;
+import com.carrot.train.entity.MatchUnionFilm;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: carrot
@@ -8,4 +13,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface FilmOrderMapper extends BaseMapper {
+    List<FilmOrder> selectFilmOrderByParams(Map<String, String> map);
 }

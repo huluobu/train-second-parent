@@ -33,8 +33,7 @@
 			</div>
             <div th:style="${session.username!=null}?'display:block;':'display:none;'">
                 <a href="pages/cart/cart.html">我的订单</a>
-                <a href="cart/page">购物车</a>
-                <a href="pages/manager/manager.html">后台管理</a>
+                <a href="pages/manager/manager.html" th:style="${session.username=='admin'}?'display:block;':'display:none;'">后台管理</a>
             </div>
             <br><br>
 	</div>
@@ -56,7 +55,7 @@
                 <li>怀柔店</li>
             </ul>-->
             <div class="book_cond">
-				<form action="searchmatch" method="get">
+				<form action="manager/match/submitmatch" method="get">
                     <input name="location" type="text" th:value="CBD店"/>
 
 				    放映厅<select name="halltype" th:value="3D">
@@ -65,7 +64,7 @@
                             <option value="child">child</option>
                             </select>
                     上映日期<input  name= "begindatetime" type="datetime-local" />
-                    <input type="submit" value="搜索" />
+                    <input type="submit" value="搜索"  />
 <!--                    <input id="min" type="text" name="min" value=""> 元 - -->
 <!--						<input id="max" type="text" name="max" value=""> 元 -->
 <!--						<input type="submit" value="查询" />-->

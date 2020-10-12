@@ -29,4 +29,19 @@
         SELECT * FROM f_filmorder WHERE id=#{primaryKey}
     </select>
 
+    <select id="selectFilmOrderByParams" parameterType="java.util.HashMap" resultType="com.carrot.train.entity.FilmOrder">
+        SELECT * FROM f_filmorder
+        <where>
+            <if test="id !=null ">and id=#{id}</if>
+            <if test="matchid !=null ">and matchid=#{matchid}</if>
+            <if test="userid!=null ">and userid=#{userid}</if>
+            <if test="seatnum!=null ">and seatnum=#{seatnum}</if>
+            <if test="totalprice!=null ">and totalprice=#{totalprice}</if>
+            <if test="ordertime!=null ">and ordertime=#{ordertime}</if>
+            <if test="updatatime!=null ">and updatatime=#{updatatime}</if>
+            <if test="price!=null ">and price=#{price}</if>
+            <if test="status!=null ">and status=#{status}</if>
+        </where>
+    </select>
+
 </mapper>

@@ -28,7 +28,6 @@ public class FilmController {
     private String selectAllFilm(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         List<Film> list = filmServiceImp.queryAllFilm();
         httpServletRequest.setAttribute("filmlist",list);
-        System.out.println(list);
         return "/manager/book_manager";
     }
 

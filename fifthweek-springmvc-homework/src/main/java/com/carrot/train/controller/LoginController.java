@@ -55,9 +55,8 @@ public class LoginController {
         System.out.println(user.toString());
 
         model.addAttribute("user", user);
-//        HttpSession session=request.getSession();
-//        session.setAttribute("username", username);
-        request.getSession().setAttribute("username", username);
+        request.getSession().setAttribute("username", user.getUsername());
+        request.getSession().setAttribute("uid", user.getId());
         return "/user/login_success.html";
 
     }

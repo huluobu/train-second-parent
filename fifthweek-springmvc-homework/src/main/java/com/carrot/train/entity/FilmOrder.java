@@ -17,7 +17,7 @@ import java.util.Date;
 public class FilmOrder {
     private Integer id;
     private Integer matchid;
-    private String userid;
+    private Integer userid;
     private Date ordertime;
     private Date updatatime;
     private String seatnum;
