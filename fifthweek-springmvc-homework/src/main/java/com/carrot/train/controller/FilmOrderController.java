@@ -42,7 +42,7 @@ public class FilmOrderController {
         params.put("userid", String.valueOf(uid));
         List<FilmOrder> list = filmOrderImp.selectFilmOrderByParams(params);
         request.setAttribute("orderlist",list);
-        return "order/order";
+        return "manager/filmorder_manager.html";
     }
 
     @RequestMapping("/add")

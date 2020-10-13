@@ -24,12 +24,9 @@
 	<div id="header">
 			<img class="logo_img" alt="" src="static/img/logo2.gif" >
 			<span class="wel_word">影城订票</span>
-
-            <span name="sessionmsg" class="wel_word" th:text="${session.values()}"></span>
 			<div th:style="${session.username==null}?'display:block;':'display:none;'">
                 <a href="pages/user/login.html" id="login" name="login" >登录</a>
 				<a href="pages/user/regist.html">注册</a>
-
 			</div>
             <div th:style="${session.username!=null}?'display:block;':'display:none;'">
                 <a href="pages/cart/cart.html">我的订单</a>
@@ -48,12 +45,6 @@
         </div>
 		<div id="book">
 
-<!--            <ul type="disc">
-                <li>CBD店</li>
-                <li>金融街店</li>
-                <li>石景山店</li>
-                <li>怀柔店</li>
-            </ul>-->
             <div class="book_cond">
 				<form action="manager/match/submitmatch" method="get">
                     <input name="location" type="text" th:value="CBD店"/>
@@ -65,9 +56,6 @@
                             </select>
                     上映日期<input  name= "begindatetime" type="datetime-local" />
                     <input type="submit" value="搜索"  />
-<!--                    <input id="min" type="text" name="min" value=""> 元 - -->
-<!--						<input id="max" type="text" name="max" value=""> 元 -->
-<!--						<input type="submit" value="查询" />-->
 				</form>
 			</div>
 
