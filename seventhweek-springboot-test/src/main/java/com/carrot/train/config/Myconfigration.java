@@ -17,37 +17,37 @@ import java.util.Arrays;
  * @Description:
  */
 @Configuration
-public class Myconfigration  extends WebMvcConfigurationSupport {
-    private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
-            "classpath:/META-INF/resources/", "classpath:/resources/",
-            "classpath:/static/", "classpath:/public/" };
+public class Myconfigration  implements WebMvcConfigurer {
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        // super.addViewControllers(registry);
+        //浏览器发送 /atguigu 请求来到 success
+//        registry.addViewController("/atguigu").setViewName("success");
+    }
 
-
-
-
+    //所有的WebMvcConfigurerAdapter组件都会一起起作用
     @Bean //将组件注册在容器
-    public WebMvcConfigurationSupport webMvcConfigurerAdapter(){
-        WebMvcConfigurationSupport adapter = new WebMvcConfigurationSupport() {
+    public WebMvcConfigurer WebMvcConfigurer(){
+        WebMvcConfigurer adapter = new WebMvcConfigurer() {
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
-                registry.addViewController("/").setViewName("login");
-                registry.addViewController("/index.html").setViewName("index.html");
-                registry.addViewController("/main.html").setViewName("dashboard");
+                registry.addViewController("/").setViewName("home");
+                registry.addViewController("/index.html").setViewName("index");
+                registry.addViewController("/main.html").setViewName("generic");
             }
 
-
+            //            //注册拦截器
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
-                registry.addInterceptor(new LoginRequiredInterceptor()).excludePathPatterns(Arrays.asList("/assets/**", "/images/**"));
-            }
-
-            @Override
-            public void addResourceHandlers(ResourceHandlerRegistry registry) {
-                registry.addResourceHandler("/**")
-                        .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
-
+                //super.addInterceptors(registry);
+                //静态资源；  *.css , *.js
+                //SpringBoot已经做好了静态资源映射
+                registry.addInterceptor(new LoginRequiredInterceptor()).addPathPatterns("/film/**").excludePathPatterns("/film/login");
+//                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+//                        .excludePathPatterns("/index.html","/","/user/login");
             }
         };
-        return adapter;}
+        return adapter;
+    }
 
 }

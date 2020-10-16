@@ -16,7 +16,19 @@ public class Helloworld {
     @RequestMapping("/hello")
     public String helloworld() {
         logger.info("输出"+hello);
-        return "index.html";
+        return "home";
+    }
+
+    @RequestMapping("/hello2")
+    public String helloworld2() {
+        logger.info("输出"+hello);
+        return "generic";
+    }
+
+    @RequestMapping("/hello3")
+    public String helloworld3() {
+        logger.info("输出"+hello);
+        return "elements";
     }
 
 //    @ResponseBody
@@ -26,7 +38,7 @@ public class Helloworld {
 //        return "error";
 //    }
 
-    @RequestMapping(value = "/hello2")
+    @RequestMapping(value = "/hello7")
     public String testHelloWorld(@RequestParam(value = "username") String un,
                                  @RequestParam(value = "age") int age) {
         System.out.println("testhello username: "+un+", age: "+age);
