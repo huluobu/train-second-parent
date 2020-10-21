@@ -444,5 +444,31 @@ FileWriter fw = null;
 	 * 若使用了  @ModelAttribute 来修饰, 则 key 为 @ModelAttribute 注解的 value 属性值. 
 
 
+## redis
+### nosql场景
+	NoSQL的适用场景
+	对数据高并发的读写
+	海量数据的读写
+	对数据高可扩展性的
+	NoSQL的不适用场景
+	需要事务支持
+	基于sql的结构化查询存储，处理复杂的关系,需要即席查询。
+
+### redis场景
+	配合关系型数据库做高速缓存
+	高频次，热门访问的数据，降低数据库IO
+	由于其拥有持久化能力，利用其多样的数据结构存储特定的数据
+	最新N个数据  通过List实现按自然事件排序的数据
+	排行榜，TopN  利用zset(有序集合)
+	时效性的数据，比如手机验证码 Expire过期
+	计数器，秒杀  原子性，自增方法INCR、DECR
+	去除大量数据中的重复数据 利用set集合
+	构建队列利用list集合
+	发布订阅消息系统  pub/sub模式
+
+	/usr/local/docker/redis/data /usr/local/docker/redis/conf/redis.conf
+docker run --name redis -p 6379:6379 -v /usr/local/docker/redis/data:/data -v /usr/local/docker/redis/conf/redis.conf:/etc/redis/redis.conf -d redis redis-server /etc/redis/redis.conf
+
+
 
 
