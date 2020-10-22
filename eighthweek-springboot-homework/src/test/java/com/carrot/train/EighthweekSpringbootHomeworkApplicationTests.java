@@ -38,7 +38,6 @@ class EighthweekSpringbootHomeworkApplicationTests {
 
         Map<String, String> map = new HashMap<>();
         serializableRedisTemplate.opsForValue().set("user", user);
-        serializableRedisTemplate.opsForHash("user1", user.getId());
         User user2 = (User) serializableRedisTemplate.opsForValue().get("user");
         System.out.println("user2:"+user2.getId()+","+user2.getUsername()+","+user2.getStatus());
     }
