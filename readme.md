@@ -467,7 +467,47 @@ FileWriter fw = null;
 	发布订阅消息系统  pub/sub模式
 
 	/usr/local/docker/redis/data /usr/local/docker/redis/conf/redis.conf
-docker run --name redis -p 6379:6379 -v /usr/local/docker/redis/data:/data -v /usr/local/docker/redis/conf/redis.conf:/etc/redis/redis.conf -d redis redis-server /etc/redis/redis.conf
+	docker run --name redis -p 6379:6379 -v /usr/local/docker/redis/data:/data -v /usr/local/docker/redis/conf/redis.conf:/etc/redis/redis.conf -d redis redis-server /etc/redis/redis.conf
+
+###Mq
+### kafka 配置文件
+version: '3'
+
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    restart: always
+    ports:
+      - "2181:2181"
+    container_name: zookeeper
+    volumes:
+      - ./zookeeper/data:/opt/zookeeper/data
+      - ./zookeeper/logs:/opt/zookeeper/logs
+    environment:
+      - ZOO_DATA_DIR=/opt/zookeeper/data
+      - ZOO_DATA_LOG_DIR=/opt/zookeeper/logs
+
+  kafka:
+    image: wurstmeister/kafka
+    restart: always
+    ports:
+      - "9092:9092"
+    volumes:
+      - ./kafka/logs:/opt/kafka
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://59.110.48.246:9092
+      KAFKA_LISTENERS: PLAINTEXT://59.110.48.246:9092
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    depends_on:
+      - zookeeper
+    container_name: kafka
+
+
+    docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper
+
+    docker run -d --name kafka --publish 9092:9092 --link zookeeper --env KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 --env KAFKA_ADVERTISED_HOST_NAME=59.110.48.246 --env KAFKA_ADVERTISED_PORT=9092 --env KAFKA_LOG_DIRS=/opt/kafka  wurstmeister/kafka:latest
+
+
 
 
 

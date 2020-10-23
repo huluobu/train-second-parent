@@ -3,6 +3,7 @@ package com.carrot.train.controller;
 import com.carrot.train.entity.Film;
 import com.carrot.train.service.Imp.FilmServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,6 +21,9 @@ import java.util.List;
 public class FilmController {
     @Autowired
     private FilmServiceImp filmServiceImp;
+
+    @Autowired
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
     @RequestMapping("/page")
     public String toEditpage(HttpServletRequest request, HttpServletResponse response) {
@@ -49,6 +53,7 @@ public class FilmController {
         film.setFilminfo(filminfo);
         film.setSales(sales);
         filmServiceImp.insert(film);
+        kafkaTemplate.send("newfilm-0", filmname);
         return "redirect:list";
     }
 

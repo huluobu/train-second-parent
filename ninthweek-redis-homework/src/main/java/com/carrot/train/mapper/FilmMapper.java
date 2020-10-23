@@ -12,5 +12,6 @@ import java.util.List;
 @Mapper
 public interface FilmMapper extends BaseMapper{
     Film findByPrimaryId(Integer fid);
+    Film findByFilmname(String filmname);
     List<Film> selectAllFilm();
 }

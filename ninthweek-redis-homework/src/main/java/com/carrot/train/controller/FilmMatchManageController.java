@@ -6,6 +6,7 @@ import com.carrot.train.entity.MatchUnionFilm;
 import com.carrot.train.service.Imp.FilmMatchServiceImp;
 import com.carrot.train.service.Imp.FilmServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -115,5 +116,18 @@ public class FilmMatchManageController {
         List<MatchUnionFilm> list = filmMatchServiceImp.queryByParams(params);
         request.setAttribute("film",list);
         return "home";
+    }
+
+    // 消费监听
+    @KafkaListener(topics = {"newfilm-0"})
+    public void listenMQNewFilm(String data) {
+        System.out.println(data);
+        Film film = filmServiceImp.findByFilmname(data);
+//        默认增加电影场次
+        FilmMatch filmMatch=new FilmMatch(null,film.getId(),"CBD店","3D",new BigDecimal(70),
+                                            0,new Date(),seats,"Y");
+        filmMatchServiceImp.insert(filmMatch);
+
+
     }
 }

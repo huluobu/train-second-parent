@@ -40,4 +40,8 @@ public class FilmServiceImp implements FilmService {
     public Film findByPrimaryId(Integer primaryKey) {
         return filmMapper.findByPrimaryId(primaryKey);
     }
+
+    public Film findByFilmname(String filmname) {
+        return filmMapper.findByFilmname(filmname);
+   }
 }

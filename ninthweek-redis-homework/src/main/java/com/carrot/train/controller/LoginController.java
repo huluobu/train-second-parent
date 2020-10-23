@@ -42,8 +42,8 @@ public class LoginController {
         if (null == username || null == password) {
             msg = "参数错误";
         } else {
-//            user = userServiceImp.findByUserName(username);
-            user = (User) serializableRedisTemplate.opsForValue().get(username);
+            user = userServiceImp.findByUserName(username);
+//            user = (User) serializableRedisTemplate.opsForValue().get(username);
             if (null == user) {
                 msg = "用户不存在";
             } else if (!password.equals(user.getPassword())) {

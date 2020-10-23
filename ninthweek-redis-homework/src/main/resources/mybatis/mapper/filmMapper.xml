@@ -46,6 +46,10 @@
         SELECT * FROM f_film WHERE id=#{id}
     </select>
 
+    <select id="findByFilmname" parameterType="String" resultMap="filmresult">
+        SELECT * FROM f_film WHERE filmname=#{filmname}
+    </select>
+
 
     <select id="selectAllFilm" resultType="com.carrot.train.entity.Film">
         SELECT * FROM f_film
