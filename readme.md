@@ -507,6 +507,45 @@ services:
 
     docker run -d --name kafka --publish 9092:9092 --link zookeeper --env KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 --env KAFKA_ADVERTISED_HOST_NAME=59.110.48.246 --env KAFKA_ADVERTISED_PORT=9092 --env KAFKA_LOG_DIRS=/home/carrot/kafka  wurstmeister/kafka
 
+### zookeeper集群配置文件
+version: "3"
+services:
+  zk1:
+    image: wurstmeister/zookeeper
+    restart: always
+    container_name: zk_c1
+    ports:
+      - 2191:2191
+    volumes:
+      - ./zookeeper/data:/home/carrot/zk/zookeeper1/data
+      - ./zookeeper/logs:/home/carrot/zk/zookeeper1/logs
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=zk1:2888:3888 server.2=zk2:4888:5888 server.3=zk3:6888:7888
+  zk2:
+    image: wurstmeister/zookeeper
+    restart: always
+    container_name: zk_c2
+    ports:
+      - 2192:2191
+    volumes:
+      - ./zookeeper/data:/home/carrot/zk/zookeeper2/data
+      - ./zookeeper/logs:/home/carrot/zk/zookeeper2/logs
+    environment:
+      ZOO_MY_ID: 2
+      ZOO_SERVERS: server.1=zk1:2888:3888 server.2=zk2:4888:5888 server.3=zk3:6888:7888
+  zk3:
+    image: wurstmeister/zookeeper
+    restart: always
+    container_name: zk_c3
+    ports:
+      - 2193:2191
+    volumes:
+      - ./zookeeper/data:/home/carrot/zk/zookeeper2/data
+      - ./zookeeper/logs:/home/carrot/zk/zookeeper2/logs
+    environment:
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=zk1:2888:3888 server.2=zk2:4888:5888 server.3=zk3:6888:7888
 
 
 
