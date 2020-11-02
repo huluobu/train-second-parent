@@ -548,6 +548,10 @@ services:
       ZOO_SERVERS: server.1=zk1:2888:3888 server.2=zk2:4888:5888 server.3=zk3:6888:7888
 
 
+### consul配置
+
+
+
 
 
 
