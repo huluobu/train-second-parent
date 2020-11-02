@@ -549,6 +549,19 @@ services:
 
 
 ### consul配置
+/home/carrot/consul/data
+
+/home/carrot/consul/config
+
+
+<!-- docker run -d -p 8001:8500 --restart=always  --mount type=volume,source=consul-data-1,target=/consul/data --mount type=volume,source=consul-conf-1,target=/consul/config -e CONSUL_BIND_INTERFACE='eth0' --name consul-server-1 consul agent -server -node server-1 --bootstrap-expect 3 -client 0.0.0.0 -ui -data-dir=/consul/data -config-dir=/consul/config  -datacenter=dh_dc
+
+docker run -d -p 8001:8500 --restart=always --mount type=volume,source=consul-data-1,target=/home/carrot/consul/data --mount type=volume,source=consul-conf-1,target=/home/carrot/consul/config -e CONSUL_BIND_INTERFACE='eth0' --name consul-server-1 consul agent -server -node server-1 \
+--bootstrap-expect 3 -client 0.0.0.0 -ui -data-dir=/home/carrot/consul/data -config-dir=/home/carrot/consul/config -datacenter=dh_dc -join=59.110.48.246 -->
+172.19.222.53
+
+
+docker run -d --restart=always -p 8500:8500 -v /data/consul:/consul/data -e CONSUL_BIND_INTERFACE='eth0' --name=consulone consul agent -server -bootstrap -ui -client='0.0.0.0'
 
 
 
