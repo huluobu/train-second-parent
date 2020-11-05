@@ -12,6 +12,7 @@
         <module>fifthweek-springmvc-homework</module>
         <module>sixth-springmvc-mplus</module>
         <module>train-lecture-springboot</module>
+        <module>train-mail-homework</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
