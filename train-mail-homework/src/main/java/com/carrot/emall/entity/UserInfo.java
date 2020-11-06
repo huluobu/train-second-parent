@@ -1,6 +1,13 @@
 package com.carrot.emall.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 
 /**
@@ -12,6 +19,10 @@ import java.io.Serializable;
  * @since 2020-11-05
  */
 @TableName("User_Info")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -19,6 +30,7 @@ public class UserInfo implements Serializable {
     /**
      * 用户id
      */
+    @TableId(value = "user_id", type = IdType.AUTO)
     private Integer userId;
 
     /**

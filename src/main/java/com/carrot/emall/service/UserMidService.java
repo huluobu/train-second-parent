@@ -2,8 +2,6 @@ package com.carrot.emall.service;
 
 import com.carrot.emall.entity.UserMid;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.carrot.emall.pojo.UserUion;
-import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -11,8 +9,8 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author carrot
- * @since 2020-11-05
+ * @since 2020-11-06
  */
 public interface UserMidService extends IService<UserMid> {
-    UserUion findByUserId(Integer userid);
+
 }

@@ -2,14 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.carrot.emall.mapper.UserMidMapper">
 
-    <resultMap id="userMidMap" type="com.carrot.emall.entity.UserMid">
-        <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <resultMap id="useruion" type="com.carrot.emall.pojo.UserUion">
+        <id column="user_id" jdbcType="INTEGER" property="userId" />
         <result column="user_second_name" jdbcType="VARCHAR" property="userSecondName" />
-        <result column="user_first_name" jdbcType="VARCHAR" property="userFirstName" />
         <result column="user_phone_num" jdbcType="VARCHAR" property="userPhoneNum" />
-        <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
         <result column="user_status" jdbcType="VARCHAR" property="userStatus" />
-        <result column="user_role_id" jdbcType="VARCHAR" property="userRoleId" />
+        <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+        <association column="user_role_id" jdbcType="INTEGER" property="userRole" select="com.carrot.emall.mapper.UserRoleMapper.selectById"/>
+        <association column="user_id" jdbcType="INTEGER" property="userInfo" select="com.carrot.emall.mapper.UserInfoMapper.selectById"/>
+        <collection column="user_id" jdbcType="INTEGER" property="userReaddressList" select="com.carrot.emall.mapper.UserReaddressMapper.selectByUserId"/>
     </resultMap>
+
+    <select id="findByUserId" parameterType="Integer" resultMap="useruion">
+        select * from User_Mid where user_id=#{userid}
+    </select>
 
 </mapper>

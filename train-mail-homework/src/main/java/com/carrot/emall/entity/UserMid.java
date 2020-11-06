@@ -58,4 +58,9 @@ public class UserMid implements Serializable {
      */
     private Integer userDefaulReaddrId;
 
+    /**
+     * 用户密码
+     */
+    private String userPassword;
+
 }

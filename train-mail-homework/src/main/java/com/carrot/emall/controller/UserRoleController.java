@@ -4,9 +4,10 @@ package com.carrot.emall.controller;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.carrot.emall.common.CommonResult;
-import com.carrot.emall.entity.UserMid;
-import com.carrot.emall.pojo.UserUion;
-import com.carrot.emall.service.imp.UserMidServiceImpl;
+import com.carrot.emall.entity.UserRole;
+import com.carrot.emall.entity.UserRole;
+import com.carrot.emall.service.imp.UserRoleServiceImpl;
+import com.carrot.emall.service.imp.UserRoleServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,20 +24,19 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2020-11-05
  */
 @RestController
-@RequestMapping("/manager/user-mid")
+@RequestMapping("/manager/user-role")
 @Slf4j
-public class UserMidController {
-
+public class UserRoleController {
     @Autowired
-    private UserMidServiceImpl userMidService;
+    private UserRoleServiceImpl userRoleService;
 
     @RequestMapping("/add")
-    public CommonResult addUserMid(@RequestBody JSONObject jsonObject) {
+    public CommonResult addUserRole(@RequestBody JSONObject jsonObject) {
         CommonResult result = new CommonResult();
-        UserMid param = JSONUtil.toBean(jsonObject, UserMid.class);
-        log.info("插入的usermid数据为 ："+param);
-        userMidService.save(param);
-        log.info("插入的usermid数据成功");
+        UserRole param = JSONUtil.toBean(jsonObject, UserRole.class);
+        log.info("插入的id数据为 ："+param);
+        userRoleService.save(param);
+        log.info("插入的id数据成功");
         result.setCode("00000");
         result.setMessage("success");
         result.setData(param);
@@ -46,10 +46,10 @@ public class UserMidController {
     @RequestMapping("/update")
     public CommonResult updateMid(@RequestBody JSONObject jsonObject) {
         CommonResult result = new CommonResult();
-        UserMid param = JSONUtil.toBean(jsonObject, UserMid.class);
-        log.info("更新usermid数据为 ："+param);
-        userMidService.updateById(param);
-        log.info("更新userid"+param.getUserId()+"成功");
+        UserRole param = JSONUtil.toBean(jsonObject, UserRole.class);
+        log.info("更新id数据为 ："+param);
+        userRoleService.updateById(param);
+        log.info("更新id"+param.getRoleId()+"成功");
         result.setCode("00000");
         result.setMessage("success");
         result.setData(param);
@@ -59,8 +59,8 @@ public class UserMidController {
     @RequestMapping("/query")
     public CommonResult queryUserById(@RequestBody JSONObject jsonObject) {
         CommonResult result = new CommonResult();
-        UserMid param = JSONUtil.toBean(jsonObject, UserMid.class);
-        UserMid userMid = userMidService.getById(param.getUserId());
+        UserRole param = JSONUtil.toBean(jsonObject, UserRole.class);
+        UserRole userMid = userRoleService.getById(param.getRoleId());
         result.setCode("00000");
         result.setMessage("success");
         result.setData(userMid);
@@ -70,23 +70,13 @@ public class UserMidController {
     @RequestMapping("/delete")
     public CommonResult deleteUserById(@RequestBody JSONObject jsonObject) {
         CommonResult result = new CommonResult();
-        UserMid param = JSONUtil.toBean(jsonObject, UserMid.class);
-        param.setUserStatus("N");
-        userMidService.updateById(param);
+        UserRole param = JSONUtil.toBean(jsonObject, UserRole.class);
+        param.setRoleStatus("N");
+        userRoleService.updateById(param);
         result.setCode("00000");
         result.setMessage("success");
         result.setData(param);
         return  result;
     }
 
-    @RequestMapping("/queryall")
-    public CommonResult queryUserUionById(@RequestBody JSONObject jsonObject) {
-        CommonResult result = new CommonResult();
-        UserMid param = JSONUtil.toBean(jsonObject, UserMid.class);
-        UserUion userresult = userMidService.findByUserId(param.getUserId());
-        result.setCode("00000");
-        result.setMessage("success");
-        result.setData(userresult);
-        return  result;
-    }
 }

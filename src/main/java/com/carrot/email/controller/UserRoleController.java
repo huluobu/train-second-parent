@@ -1,4 +1,4 @@
-package com.carrot.email.controller;
+package com.carrot.emall.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2020-11-05
  */
 @RestController
-@RequestMapping("/email/user-role")
+@RequestMapping("/emall/user-role")
 public class UserRoleController {
 
 }

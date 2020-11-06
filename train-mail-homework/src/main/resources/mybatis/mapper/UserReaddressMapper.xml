@@ -2,4 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.carrot.emall.mapper.UserReaddressMapper">
 
+    <select id="selectByUserId" parameterType="Integer" resultType="com.carrot.emall.entity.UserReaddress">
+        select * from User_ReAddress where user_id=#{userid}
+    </select>
 </mapper>

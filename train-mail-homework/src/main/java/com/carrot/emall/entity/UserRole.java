@@ -3,6 +3,11 @@ package com.carrot.emall.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 
 /**
@@ -14,6 +19,10 @@ import java.io.Serializable;
  * @since 2020-11-05
  */
 @TableName("User_Role")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserRole implements Serializable {
 
     private static final long serialVersionUID = 1L;

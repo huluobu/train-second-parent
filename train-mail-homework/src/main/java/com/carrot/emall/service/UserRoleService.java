@@ -14,4 +14,6 @@ import com.carrot.emall.entity.UserRole;
  */
 public interface UserRoleService extends IService<UserRole> {
 
+    UserRole findUserRoleById(Object id);
+
 }

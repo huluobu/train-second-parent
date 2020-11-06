@@ -1,10 +1,7 @@
 package com.carrot.emall.mapper;
 
 import com.carrot.emall.entity.UserMid;
-
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.carrot.emall.pojo.UserUion;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -12,13 +9,8 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author carrot
- * @since 2020-11-05
+ * @since 2020-11-06
  */
-@Mapper
 public interface UserMidMapper extends BaseMapper<UserMid> {
-
-    UserUion findByUserId(Integer userid);
-
-
 
 }
