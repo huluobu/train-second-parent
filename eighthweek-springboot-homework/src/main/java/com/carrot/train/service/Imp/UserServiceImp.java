@@ -7,6 +7,8 @@ import com.carrot.train.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImp implements UserService {
     @Autowired
@@ -33,6 +35,11 @@ public class UserServiceImp implements UserService {
     public User findByUserName(Object primaryKey) {
         User user = usersMapper.findByUserName(primaryKey);
         return user;
+    }
+
+    @Override
+    public void saveList(List<User> list) {
+        usersMapper.saveAll(list);
     }
 
 }

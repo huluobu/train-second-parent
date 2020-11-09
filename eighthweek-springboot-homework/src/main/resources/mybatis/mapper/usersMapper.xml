@@ -28,4 +28,11 @@
         SELECT * FROM f_user WHERE username=#{primaryKey}
     </select>
 
+    <insert id="saveAll" parameterType="java.util.List">
+        insert into f_user (username,password, email,status)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.username}, #{item.password}, #{item.email},#{item.status})
+        </foreach>
+    </insert>
 </mapper>

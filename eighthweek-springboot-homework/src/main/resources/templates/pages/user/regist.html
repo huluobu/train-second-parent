@@ -88,6 +88,12 @@
 <!--					<input type="hidden" id="" id="backmsg" name="backmsg" th:value="${msg}">-->
 <!--					<span th:type="hidden" th:id="backmsg" th:name="backmsg" th:data="${msg}"></span>-->
 				</div>
+				<h2>
+					<form action="importexcel" method="post" enctype="multipart/form-data">
+						导入Excel：<input type="file" name="excelFile" accept=".xls,.xlsx">
+						<input type="submit" value="提交">
+					</form>
+				</h2>
 				<div class="form">
 					<form action="submitRegister" method="post">
 						<label>用户名称：</label>
