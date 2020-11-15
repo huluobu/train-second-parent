@@ -1,5 +1,6 @@
 package com.carrot.emall.generation;
 
+import com.carrot.emall.entity.ProductCart;
 import com.carrot.emall.entity.UserMid;
 import org.junit.Test;
 
@@ -9,7 +10,7 @@ public class ResultMapUtilTest {
 
     @Test
     public void getResultMap() {
-        String resultmaps = ResultMapUtil.getResultMap(UserMid.class);
+        String resultmaps = ResultMapUtil.getResultMap(ProductCart.class);
         System.out.println(resultmaps);
     }
 }
